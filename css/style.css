@@ -1,0 +1,29 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.onload-welcome-modal {
+	width: 50%;
+	height: 50%;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+
+.welcome-modal-header {}
+
+.welcome-modal-second-header {
+	margin-left: 2%;
+}
+
+.sign-in-options-container {
+	
+}
+
+.new-user-modal {
+
+}
+
+.height-full {
+	height: 100%;
+}

@@ -1,0 +1,53 @@
+{% extends "base_template.html" %}
+
+
+{% block title %}User Profile{% endblock %}
+
+
+{% block content %}
+	<div class="container height-full">
+		<div class="row">
+			<div class="col-md-12">
+				<div>Welcome To Your Profile</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if google_user %}
+					<a href="{{google_logout_link}}" class="btn btn-block btn-social btn-google">
+	    				<span class="fa fa-google"></span> Log Out
+	  				</a>
+
+	  				<!-- if the user who signed in with google, whose user_id has just been stored in my db, then load in a script and html that explains to the user how to use my site -->
+	  				{% if user_brand_new %}
+	  					<div class="col-md-6">
+							<div id="new_user_modal" class="modal new-user-modal">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h2>Modal Header</h2>
+									</div>
+									<div class="modal-body">
+										<h1>Modal body</h1>
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-primary" onclick="closeModal('new_user_modal');">Get Results</button>
+									</div>
+								</div>
+							</div>
+						</div>
+	  				{% endif %}
+	  				{% for id in ids %}
+	  					<script>console.log("{{id}}")</script>
+	  				{% endfor %}
+	  				<script>console.log("google_user: true");</script>
+	  			{% elif fb_user %}
+	  				<a id="fb-login-btn" class="btn btn-block btn-social btn-facebook" onclick="logoutFB();">
+	    				<span class="fa fa-facebook"></span> Logout
+	  				</a>
+	  				<script>console.log("fb_user: true");</script>
+	  				<script src="js/load_fb_sdk.js"></script>
+	  			{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
