@@ -24,6 +24,7 @@ import pickle
 import string
 import re
 import logging
+import google_users_db
 from google.appengine.ext import db
 from google.appengine.api import mail
 from xml.dom import minidom
@@ -33,6 +34,7 @@ template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), 
 	autoescape = True)
 
+GoogleUser = google_users_db.GoogleUser
 class MainHandler(webapp2.RequestHandler):
     def write(self, *args, **kwargs):
         self.response.out.write(*args, **kwargs)
@@ -50,7 +52,7 @@ class HomePage(MainHandler):
 			user = users.get_current_user()
 			if user:
 				self.redirect("/google_user_profile")
-				logging.info("user %s is signed in to dtd3dgames", user.nickname())
+				logging.info("user %s is signed in to this app through google", user.nickname())
 			else:
 				logging.info("user is not signed in, loading index.html")
 				self.render("index.html")

@@ -3,9 +3,6 @@
 function handleLoginResponse(response) {
 	log(response);
 
-  /* 
-  
-  */
 	if (response.status === 'connected') {
     	log("user is logged into fb on this app");
     	if (window.location.pathname === "/")
